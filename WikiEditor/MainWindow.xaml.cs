@@ -23,6 +23,28 @@ namespace WikiEditor
         public MainWindow()
         {
             InitializeComponent();
+
+            btnEdit.Click += BtnEdit_Click;
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            var content = tbxContent.Text;
+            if (string.IsNullOrEmpty(content))
+            {
+                return;
+            }
+
+            string[] lines = content.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (!string.IsNullOrEmpty(lines[i]))
+                {
+                    lines[i] += @"\\";
+                }
+            }
+
+            tbxContent.Text = string.Join("\r\n", lines);
         }
     }
 }
