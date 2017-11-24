@@ -23,7 +23,7 @@ namespace WikiEditor
         public MainWindow()
         {
             InitializeComponent();
-
+            tbxContent.Focus();
             btnEdit.Click += BtnEdit_Click;
         }
 
